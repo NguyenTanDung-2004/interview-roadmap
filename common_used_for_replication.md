@@ -11,3 +11,6 @@
 
 
 **=> MySQL also has a hybrid mode called Mixed-Based Replication. It uses the lightweight text commands by default to save the nextwork bandwidth, but automatically switches to sending the raw row data if it detects a tricky command (like a timestamp)**
+
+## Scaling Read Traffic
+MySQL replication can help you distribute read queries across several servers, which work very well for read-intensive applications.
