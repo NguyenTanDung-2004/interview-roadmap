@@ -1,13 +1,5 @@
 package poc.tech.grpc;
 
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-
-public class ServletInitializer extends SpringBootServletInitializer {
-
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(GrpcApplication.class);
-	}
-
+// Kept as a placeholder to avoid breaking package structure from the generated scaffold.
+public class ServletInitializer {
 }
