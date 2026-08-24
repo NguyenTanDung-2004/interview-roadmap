@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Roadmap - Interactive Learning Path</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --light-bg: #ecf0f1;
+            --dark-text: #2c3e50;
+            --border-radius: 8px;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
+            color: var(--dark-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e8f0f8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            display: none;
+        }
+
+        /* Controls - Inline */
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .search-box {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.2);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .filter-btn {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+
+        .stats-bar {
+            display: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            gap: 0;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .domains-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            overflow-y: auto;
+            background: white;
+            border-right: 1px solid #e8f0f8;
+            width: 350px;
+            flex-shrink: 0;
+            transition: width 0.1s ease;
+        }
+
+        .resizable-divider {
+            width: 6px;
+            background: #e0e0e0;
+            cursor: col-resize;
+            user-select: none;
+            transition: background 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .resizable-divider:hover,
+        .resizable-divider.active {
+            background: #3498db;
+        }
+
+        .breadcrumb {
+            padding: 12px 16px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e8f0f8;
+            font-size: 0.9em;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb-item {
+            cursor: pointer;
+            color: #3498db;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb-item:hover {
+            color: #2980b9;
+        }
+
+        .breadcrumb-item.current {
+            color: #666;
+            cursor: default;
+        }
+
+        .breadcrumb-separator {
+            color: #ccc;
+        }
+
+        /* Domain Card */
+        .domain-card {
+            background: white;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
+            transition: all 0.2s ease;
+            border-left: 3px solid;
+            border-bottom: 1px solid #e8f0f8;
+        }
+
+        .domain-item,
+        .subdomain-item,
+        .topic-item-nav {
+            padding: 12px 16px;
+            background: white;
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 3px solid;
+            border-bottom: 1px solid #e8f0f8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95em;
+        }
+
+        .domain-item:hover,
+        .subdomain-item:hover,
+        .topic-item-nav:hover {
+            background: #f8f9fa;
+        }
+
+        .domain-item.active,
+        .subdomain-item.active,
+        .topic-item-nav.active {
+            background: #e8f4f8;
+        }
+
+        .item-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .item-icon {
+            font-size: 1.2em;
+        }
+
+        .item-text {
+            flex: 1;
+        }
+
+        .item-name {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .item-arrow {
+            color: #ccc;
+            font-size: 0.8em;
+        }
+
+        .difficulty-badge.beginner {
+            background: #d5f4e6;
+            color: #27ae60;
+        }
+
+        .difficulty-badge.intermediate {
+            background: #ffeaa7;
+            color: #f39c12;
+        }
+
+        /* Subdomain Section */
+        .subdomain-section {
+            margin-left: 20px;
+            margin-top: 15px;
+            padding-left: 15px;
+            border-left: 2px solid #e8f4f8;
+        }
+
+        .subdomain-card {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            border-left: 3px solid;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .subdomain-card:hover {
+            background: #ecf0f1;
+            transform: translateX(3px);
+        }
+
+        .subdomain-card[data-domain="transactions"] {
+            border-left-color: #3498db;
+        }
+
+        .subdomain-card[data-domain="replication"] {
+            border-left-color: #27ae60;
+        }
+
+        .subdomain-card[data-domain="performance"] {
+            border-left-color: #f39c12;
+        }
+
+        .subdomain-card[data-domain="fundamentals"] {
+            border-left-color: #e74c3c;
+        }
+
+        .subdomain-card[data-domain="embeddings"] {
+            border-left-color: #9b59b6;
+        }
+
+        .subdomain-card[data-domain="training"] {
+            border-left-color: #16a085;
+        }
+
+        .subdomain-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .subdomain-icon {
+            font-size: 1.3em;
+        }
+
+        .subdomain-info {
+            flex: 1;
+        }
+
+        .subdomain-title {
+            font-weight: 600;
+            color: var(--dark-text);
+            font-size: 0.95em;
+        }
+
+        .subdomain-description {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        .collapse-icon {
+            font-size: 1.2em;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .collapse-icon.collapsed {
+            transform: rotate(-90deg);
+        }
+
+        .subdomain-content {
+            margin-top: 10px;
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .subdomain-content.collapsed {
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        /* Tree View Styles */
+        .tree-view {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.95em;
+            line-height: 1.8;
+            padding: 8px 4px;
+            color: var(--dark-text);
+        }
+
+        .tree-node {
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+
+        .tree-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 6px;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 3px;
+            transition: all 0.2s ease;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .tree-label:hover {
+            background: #f0f0f0;
+        }
+
+        .tree-label.active {
+            background: #e8f4f8;
+            font-weight: 600;
+        }
+
+        .tree-toggle {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.75em;
+            transition: transform 0.2s ease;
+            color: #666;
+        }
+
+        .tree-toggle.collapsed {
+            transform: rotate(0deg);
+        }
+
+        .tree-toggle.no-children {
+            cursor: default;
+            visibility: hidden;
+            width: 18px;
+        }
+
+        .tree-children {
+            margin-left: 16px;
+            border-left: 1px solid #e0e0e0;
+            padding-left: 8px;
+            max-height: 10000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            font-size: inherit;
+        }
+
+        .tree-children.collapsed {
+            max-height: 0;
+            overflow: hidden;
+            border-left: none;
+        }
+
+        .tree-icon {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1em;
+        }
+
+        .tree-folder-icon {
+            color: #3498db;
+        }
+
+        .tree-file-icon {
+            color: #999;
+        }
+
+        .tree-text {
+            flex: 1;
+            word-break: break-word;
+            font-size: inherit;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .tree-topic {
+            padding-left: 24px;
+        }
+
+        .tree-difficulty {
+            font-size: 0.75em;
+            padding: 2px 6px;
+            border-radius: 2px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .tree-difficulty.beginner {
+            background: #d5f4e6;
+            color: #27ae60;
+        }
+
+        .tree-difficulty.intermediate {
+            background: #ffeaa7;
+            color: #f39c12;
+        }
+
+        .tree-difficulty.advanced {
+            background: #ffcccc;
+            color: #e74c3c;
+        }
+
+        .viewer-section {
+            background: white;
+            border-radius: 0;
+            padding: 24px;
+            box-shadow: none;
+            position: relative;
+            max-height: none;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 400px;
+        }
+
+        .viewer-header {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .viewer-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--dark-text);
+        }
+
+        .viewer-meta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+            font-size: 0.9em;
+        }
+
+        .viewer-content {
+            color: #444;
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+
+        .viewer-content h2 {
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+            color: var(--dark-text);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .viewer-content h3 {
+            font-size: 1.1em;
+            margin: 15px 0 8px 0;
+            color: #333;
+        }
+
+        .viewer-content ul,
+        .viewer-content ol {
+            margin: 10px 0 10px 20px;
+        }
+
+        .viewer-content li {
+            margin: 5px 0;
+        }
+
+        .viewer-content code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .viewer-content pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+        }
+
+        .viewer-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 12px 0;
+            border-radius: 6px;
+        }
+
+        .placeholder {
+            text-align: center;
+            color: #999;
+            padding: 40px 20px;
+        }
+
+        .placeholder-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .resizable-divider {
+                display: none;
+            }
+
+            .domains-section {
+                width: 100% !important;
+                border-right: none;
+                border-bottom: 1px solid #e8f0f8;
+                max-height: 300px;
+                flex-shrink: 1;
+            }
+
+            .viewer-section {
+                flex: 1;
+                min-width: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .search-box {
+                min-width: auto;
+            }
+
+            .topic-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .difficulty-badge {
+                margin-top: 10px;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--secondary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat {
+            background: white;
+            padding: 15px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #eee;
+            border-radius: 10px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Interview Roadmap</h1>
+            <div class="controls">
+                <input type="text" class="search-box" id="searchBox" placeholder="Search topics...">
+                <div class="filter-buttons" id="filterButtons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                </div>
+            </div>
+        </header>
+
+        <div id="breadcrumb" class="breadcrumb"></div>
+
+        <div class="main-content" id="mainContent">
+            <div class="domains-section" id="domainsSection"></div>
+            <div class="resizable-divider" id="resizableDivider"></div>
+            <div class="viewer-section" id="viewerSection">
+                <div class="placeholder">
+                    <div class="placeholder-icon">👈</div>
+                    <p>Select a topic</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let roadmapData = null;
+        let currentTopic = null;
+        let allTopics = [];
+        let navigationStack = []; // Track navigation history
+
+        // Load roadmap data
+        async function loadRoadmap() {
+            try {
+                const response = await fetch('roadmap.json?v=' + Date.now());
+                roadmapData = await response.json();
+                initializeUI();
+            } catch (error) {
+                console.error('Error loading roadmap:', error);
+            }
+        }
+
+        function initializeUI() {
+            collectAllTopics();
+            renderFilterButtons();
+            renderTreeView();
+            setupEventListeners();
+        }
+
+        function renderFilterButtons() {
+            const container = document.getElementById('filterButtons');
+            const domainBtns = roadmapData.roadmap.domains.map(domain =>
+                `<button class="filter-btn" data-filter="${domain.id}">${domain.name}</button>`
+            ).join('');
+            container.innerHTML = `<button class="filter-btn active" data-filter="all">All</button>${domainBtns}`;
+        }
+
+        function collectAllTopics() {
+            allTopics = [];
+            roadmapData.roadmap.domains.forEach(domain => {
+                if (domain.subdomains) {
+                    domain.subdomains.forEach(subdomain => {
+                        subdomain.topics.forEach(topic => {
+                            allTopics.push({
+                                ...topic, 
+                                domainId: domain.id, 
+                                domainName: domain.name,
+                                subdomainId: subdomain.id,
+                                subdomainName: subdomain.name
+                            });
+                        });
+                    });
+                }
+            });
+        }
+
+        function renderTreeView() {
+            navigationStack = [];
+            renderBreadcrumb();
+            
+            const domainsSection = document.getElementById('domainsSection');
+            let html = '<div class="tree-view">';
+            
+            // Root node
+            html += `
+                <div class="tree-node">
+                    <div class="tree-label">
+                        <span class="tree-toggle no-children"></span>
+                        <span class="tree-icon tree-folder-icon">📁</span>
+                        <span class="tree-text">Interview Roadmap</span>
+                    </div>
+                    <div class="tree-children">
+            `;
+            
+            // Domains
+            roadmapData.roadmap.domains.forEach((domain, domainIdx) => {
+                html += `
+                    <div class="tree-node" data-domain-id="${domain.id}">
+                        <div class="tree-label" onclick="toggleExpand(event, 'domain-${domain.id}')">
+                            <span class="tree-toggle" id="toggle-domain-${domain.id}">▼</span>
+                            <span class="tree-icon tree-folder-icon">📁</span>
+                            <span class="tree-text">${domain.name}</span>
+                        </div>
+                        <div class="tree-children" id="domain-${domain.id}">
+                `;
+                
+                // Subdomains
+                domain.subdomains.forEach((subdomain, subIdx) => {
+                    html += `
+                        <div class="tree-node" data-subdomain-id="${subdomain.id}">
+                            <div class="tree-label" onclick="toggleExpand(event, 'subdomain-${subdomain.id}')">
+                                <span class="tree-toggle" id="toggle-subdomain-${subdomain.id}">▼</span>
+                                <span class="tree-icon tree-folder-icon">📁</span>
+                                <span class="tree-text">${subdomain.name}</span>
+                            </div>
+                            <div class="tree-children" id="subdomain-${subdomain.id}">
+                    `;
+                    
+                    // Topics
+                    subdomain.topics.forEach((topic, topicIdx) => {
+                        html += `
+                            <div class="tree-node tree-topic" data-topic-id="${topic.id}">
+                                <div class="tree-label" onclick="selectTopic('${topic.id}')">
+                                    <span class="tree-toggle no-children"></span>
+                                    <span class="tree-icon tree-file-icon">📄</span>
+                                    <span class="tree-text">${topic.title}</span>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `
+                    </div>
+                </div>
+            </div>`;
+            
+            domainsSection.innerHTML = html;
+        }
+
+        function toggleExpand(event, nodeId) {
+            event.stopPropagation();
+            const childrenEl = document.getElementById(nodeId);
+            const toggleEl = document.getElementById('toggle-' + nodeId);
+            
+            if (childrenEl && toggleEl) {
+                childrenEl.classList.toggle('collapsed');
+                toggleEl.classList.toggle('collapsed');
+            }
+        }
+
+        function renderBreadcrumb() {
+            const breadcrumb = document.getElementById('breadcrumb');
+            breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="renderTreeView()">📁 Interview Roadmap</span>';
+        }
+
+        function setupEventListeners() {
+            // Filter buttons
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.filter-btn')) {
+                    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.closest('.filter-btn').classList.add('active');
+                    const filter = e.target.closest('.filter-btn').dataset.filter;
+                    filterTopics(filter);
+                }
+            });
+
+            // Search
+            document.getElementById('searchBox').addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                filterTopicsBySearch(query);
+            });
+
+            // Resizable divider
+            setupResizableDivider();
+        }
+
+        function setupResizableDivider() {
+            const divider = document.getElementById('resizableDivider');
+            const domainsSection = document.getElementById('domainsSection');
+            const mainContent = document.getElementById('mainContent');
+            let isResizing = false;
+
+            divider.addEventListener('mousedown', () => {
+                isResizing = true;
+                divider.classList.add('active');
+                document.body.style.cursor = 'col-resize';
+                document.body.style.userSelect = 'none';
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isResizing) return;
+
+                const containerRect = mainContent.getBoundingClientRect();
+                const newWidth = e.clientX - containerRect.left;
+
+                // Constrain width: minimum 250px, maximum 70% of container
+                const minWidth = 250;
+                const maxWidth = containerRect.width * 0.7;
+
+                if (newWidth >= minWidth && newWidth <= maxWidth) {
+                    domainsSection.style.width = newWidth + 'px';
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isResizing) {
+                    isResizing = false;
+                    divider.classList.remove('active');
+                    document.body.style.cursor = 'default';
+                    document.body.style.userSelect = 'auto';
+                }
+            });
+        }
+
+        function selectTopic(topicId) {
+            currentTopic = allTopics.find(t => t.id === topicId);
+            
+            if (!currentTopic) {
+                console.error(`Topic not found: ${topicId}`);
+                return;
+            }
+            
+            // Update UI
+            document.querySelectorAll('.tree-label').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-topic-id="${topicId}"] .tree-label`)?.classList.add('active');
+
+            // Load and display content
+            loadTopicContent(currentTopic);
+        }
+
+        async function loadTopicContent(topic) {
+            const viewerSection = document.getElementById('viewerSection');
+            try {
+                const response = await fetch(topic.file);
+                const content = await response.text();
+                const htmlContent = markdownToHtml(content);
+
+                viewerSection.innerHTML = `
+                    <div class="viewer-header">
+                        <div class="viewer-title">${topic.title}</div>
+                        <div class="viewer-meta">
+                            <span style="color: #666; font-size: 0.9em;">${topic.domainName}</span>
+                            ${topic.subdomainName ? `<span style="color: #999; font-size: 0.85em;">→ ${topic.subdomainName}</span>` : ''}
+                            <div class="difficulty-badge ${topic.difficulty}">${topic.difficulty}</div>
+                        </div>
+                    </div>
+                    <div class="viewer-content">${htmlContent}</div>
+                `;
+                
+                viewerSection.scrollTop = 0;
+            } catch (error) {
+                viewerSection.innerHTML = `
+                    <div class="placeholder">
+                        <div class="placeholder-icon">❌</div>
+                        <p>Error loading content</p>
+                    </div>
+                `;
+            }
+        }
+
+        function markdownToHtml(markdown) {
+            let html = markdown;
+
+            // Headers
+            html = html.replace(/^### (.*?)$/gm, '<h3>$1</h3>');
+            html = html.replace(/^## (.*?)$/gm, '<h2>$1</h2>');
+            html = html.replace(/^# (.*?)$/gm, '<h1>$1</h1>');
+
+            // Bold and italic
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+            // Images (must run before link replacement)
+            html = html.replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1">');
+
+            // Links
+            html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>');
+
+            // Code blocks
+            html = html.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+
+            // Inline code
+            html = html.replace(/`(.*?)`/g, '<code>$1</code>');
+
+            // Lists
+            html = html.replace(/^\* (.*?)$/gm, '<li>$1</li>');
+            html = html.replace(/(<li>.*?<\/li>)/s, '<ul>$1</ul>');
+
+            // Line breaks
+            html = html.replace(/\n\n/g, '</p><p>');
+            html = html.replace(/\n/g, '<br>');
+            html = '<p>' + html + '</p>';
+
+            return html;
+        }
+
+        function filterTopics(filter) {
+            if (filter === 'all') {
+                renderTreeView();
+            } else {
+                // Filter to show only selected domain
+                renderTreeView();
+                
+                // Collapse all domains except selected
+                roadmapData.roadmap.domains.forEach(domain => {
+                    const childEl = document.getElementById('domain-' + domain.id);
+                    const toggleEl = document.getElementById('toggle-domain-' + domain.id);
+                    
+                    if (domain.id !== filter) {
+                        // Collapse other domains
+                        if (childEl && toggleEl) {
+                            childEl.classList.add('collapsed');
+                            toggleEl.classList.add('collapsed');
+                        }
+                    } else {
+                        // Expand selected domain
+                        if (childEl && toggleEl) {
+                            childEl.classList.remove('collapsed');
+                            toggleEl.classList.remove('collapsed');
+                        }
+                    }
+                });
+            }
+        }
+
+        function filterTopicsBySearch(query) {
+            if (!query) {
+                renderTreeView();
+                return;
+            }
+
+            const results = allTopics.filter(topic => {
+                const title = topic.title.toLowerCase();
+                const tags = topic.tags.map(t => t.toLowerCase());
+                return title.includes(query) || tags.some(t => t.includes(query));
+            });
+
+            const domainsSection = document.getElementById('domainsSection');
+            if (results.length === 0) {
+                domainsSection.innerHTML = '<div style="padding: 20px; color: #999;">No topics found</div>';
+            } else {
+                // Show search results in tree view
+                let html = '<div class="tree-view">';
+                html += '<div class="tree-node"><div class="tree-label"><span class="tree-toggle no-children"></span><span class="tree-icon tree-folder-icon">📁</span><span class="tree-text">Search Results (' + results.length + ')</span></div><div class="tree-children">';
+                
+                results.forEach(topic => {
+                    html += `
+                        <div class="tree-node tree-topic" data-topic-id="${topic.id}">
+                            <div class="tree-label" onclick="selectTopic('${topic.id}')">
+                                <span class="tree-toggle no-children"></span>
+                                <span class="tree-icon tree-file-icon">📄</span>
+                                <span class="tree-text">${topic.title}</span>
+                                <span style="font-size: 0.75em; color: #999; margin-left: 8px;">${topic.domainName} → ${topic.subdomainName}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                html += '</div></div></div>';
+                domainsSection.innerHTML = html;
+            }
+        }
+
+        // Initialize
+        loadRoadmap();
+    </script>
+</body>
+</html>

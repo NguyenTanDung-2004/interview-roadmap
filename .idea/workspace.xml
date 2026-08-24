@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1c1327e6-e3fc-463f-b030-34cd90617f76" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/ACID.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI_AGI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deadlocks_TransactionLogging.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Delayed_Replication.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Embeddings_VectorDBs.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fine_Tuning.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Global_Transaction_Identifiers.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Isolation_Levels.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LLM.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Multithreaded_Replication_Modes.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RAG_AIAgents.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Replication_Failover.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Training_Inference.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common_used_for_replication.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/how_mysql_replication_works.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/how_mysql_replication_works.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/indexing-for-high-performance.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/semissynchronous_replication.md" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotChats">
+    <option name="panelChat">
+      <chat>
+        <option name="activeSessionId" value="442c3066-55f0-419a-a2d1-1518cb9272e2" />
+        <option name="sessions">
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="442c3066-55f0-419a-a2d1-1518cb9272e2" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+        </option>
+        <option name="type" value="PANEL" />
+      </chat>
+    </option>
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Users/dung.nguyen/Downloads/leonnguyen/interview-roadmap" value="3HAhdPj266VK3kE2vV8bMg9hMAT" />
+    </persistenceIdMap>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "dungnguyen-uno"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/NguyenTanDung-2004/interview-roadmap.git",
+    "accountId": "6da4058f-86cf-4d1f-8bf4-c820f69f3b0c"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="3HAhdPj266VK3kE2vV8bMg9hMAT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature/build-ui",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.32098.37" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1c1327e6-e3fc-463f-b030-34cd90617f76" name="Changes" comment="" />
+      <created>1785316870374</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1785316870374</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>

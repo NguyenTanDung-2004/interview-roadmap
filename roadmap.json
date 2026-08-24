@@ -1,0 +1,362 @@
+{
+  "roadmap": {
+    "title": "Interview Roadmap",
+    "description": "Auto-generated from folder structure",
+    "version": "2.1.0",
+    "domains": [
+      {
+        "id": "database",
+        "name": "Database",
+        "icon": "🗄️",
+        "color": "#3498db",
+        "description": "Master database fundamentals, MySQL replication, optimization, and transactions",
+        "subdomains": [
+          {
+            "id": "transactions",
+            "name": "Transactions",
+            "icon": "🔄",
+            "color": "#3498db",
+            "description": "Understanding database transactions and ACID properties",
+            "topics": [
+              {
+                "id": "acid",
+                "title": "ACID",
+                "file": "01-Database/01-Transactions/ACID.md",
+                "tags": [
+                  "fundamentals",
+                  "transactions",
+                  "consistency"
+                ],
+                "difficulty": "intermediate"
+              },
+              {
+                "id": "deadlocks",
+                "title": "Deadlocks Transactionlogging",
+                "file": "01-Database/01-Transactions/Deadlocks_TransactionLogging.md",
+                "tags": [
+                  "concurrency",
+                  "transactions",
+                  "troubleshooting",
+                  "logging"
+                ],
+                "difficulty": "advanced"
+              },
+              {
+                "id": "isolation-levels",
+                "title": "Isolation Levels",
+                "file": "01-Database/01-Transactions/Isolation_Levels.md",
+                "tags": [
+                  "transactions",
+                  "concurrency",
+                  "isolation"
+                ],
+                "difficulty": "intermediate"
+              }
+            ]
+          },
+          {
+            "id": "replication",
+            "name": "Replication",
+            "icon": "📡",
+            "color": "#27ae60",
+            "description": "Learn MySQL replication, failover, and data consistency strategies",
+            "topics": [
+              {
+                "id": "common-replication",
+                "title": "Common Used For Replication",
+                "file": "01-Database/02-Replication/common_used_for_replication.md",
+                "tags": [
+                  "replication",
+                  "use-cases",
+                  "patterns"
+                ],
+                "difficulty": "beginner"
+              },
+              {
+                "id": "delayed-replication",
+                "title": "Delayed Replication",
+                "file": "01-Database/02-Replication/Delayed_Replication.md",
+                "tags": [
+                  "replication",
+                  "disaster-recovery",
+                  "protection"
+                ],
+                "difficulty": "advanced"
+              },
+              {
+                "id": "global-txn-ids",
+                "title": "Global Transaction Identifiers",
+                "file": "01-Database/02-Replication/Global_Transaction_Identifiers.md",
+                "tags": [
+                  "replication",
+                  "consistency",
+                  "gtid"
+                ],
+                "difficulty": "advanced"
+              },
+              {
+                "id": "replication-basics",
+                "title": "How MySQL Replication Works",
+                "file": "01-Database/02-Replication/how_mysql_replication_works.md",
+                "tags": [
+                  "replication",
+                  "high-availability",
+                  "basics"
+                ],
+                "difficulty": "intermediate"
+              },
+              {
+                "id": "replication-modes",
+                "title": "Multithreaded Replication Modes",
+                "file": "01-Database/02-Replication/Multithreaded_Replication_Modes.md",
+                "tags": [
+                  "replication",
+                  "performance",
+                  "scalability"
+                ],
+                "difficulty": "advanced"
+              },
+              {
+                "id": "replication-failover",
+                "title": "Replication Failover",
+                "file": "01-Database/02-Replication/Replication_Failover.md",
+                "tags": [
+                  "replication",
+                  "high-availability",
+                  "failover"
+                ],
+                "difficulty": "advanced"
+              },
+              {
+                "id": "semisync-replication",
+                "title": "Semissynchronous Replication",
+                "file": "01-Database/02-Replication/semissynchronous_replication.md",
+                "tags": [
+                  "replication",
+                  "data-consistency",
+                  "reliability"
+                ],
+                "difficulty": "advanced"
+              }
+            ]
+          },
+          {
+            "id": "performance",
+            "name": "Performance",
+            "icon": "⚡",
+            "color": "#f39c12",
+            "description": "Optimize database performance through indexing and tuning",
+            "topics": [
+              {
+                "id": "indexing",
+                "title": "Indexing For High Performance",
+                "file": "01-Database/03-Performance/indexing-for-high-performance.md",
+                "tags": [
+                  "performance",
+                  "optimization",
+                  "indexing",
+                  "query-tuning"
+                ],
+                "difficulty": "intermediate"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ai",
+        "name": "AI",
+        "icon": "🤖",
+        "color": "#e74c3c",
+        "description": "Explore AI/AGI concepts, LLMs, embeddings, RAG, and training techniques",
+        "subdomains": [
+          {
+            "id": "fundamentals",
+            "name": "Fundamentals",
+            "icon": "📚",
+            "color": "#e74c3c",
+            "description": "Core concepts in AI and LLMs",
+            "topics": [
+              {
+                "id": "ai-agi",
+                "title": "AI AGI",
+                "file": "02-AI/01-Fundamentals/AI_AGI.md",
+                "tags": [
+                  "fundamentals",
+                  "theory",
+                  "ai-concepts"
+                ],
+                "difficulty": "beginner"
+              },
+              {
+                "id": "llm-basics",
+                "title": "LLM",
+                "file": "02-AI/01-Fundamentals/LLM.md",
+                "tags": [
+                  "llm",
+                  "fundamentals",
+                  "transformers"
+                ],
+                "difficulty": "intermediate"
+              }
+            ]
+          },
+          {
+            "id": "embeddings",
+            "name": "Embeddings",
+            "icon": "🔍",
+            "color": "#9b59b6",
+            "description": "Vector embeddings and RAG systems",
+            "topics": [
+              {
+                "id": "embeddings-vectordb",
+                "title": "Embeddings Vectordbs",
+                "file": "02-AI/02-Embeddings/Embeddings_VectorDBs.md",
+                "tags": [
+                  "embeddings",
+                  "vector-db",
+                  "semantic-search"
+                ],
+                "difficulty": "intermediate"
+              },
+              {
+                "id": "rag",
+                "title": "RAG Aiagents",
+                "file": "02-AI/02-Embeddings/RAG_AIAgents.md",
+                "tags": [
+                  "rag",
+                  "agents",
+                  "advanced-llm",
+                  "retrieval"
+                ],
+                "difficulty": "advanced"
+              }
+            ]
+          },
+          {
+            "id": "training",
+            "name": "Training",
+            "icon": "🎓",
+            "color": "#16a085",
+            "description": "Model training, inference, and fine-tuning strategies",
+            "topics": [
+              {
+                "id": "fine-tuning",
+                "title": "Fine Tuning",
+                "file": "02-AI/03-Training/Fine_Tuning.md",
+                "tags": [
+                  "fine-tuning",
+                  "model-training",
+                  "optimization"
+                ],
+                "difficulty": "advanced"
+              },
+              {
+                "id": "training-inference",
+                "title": "Training Inference",
+                "file": "02-AI/03-Training/Training_Inference.md",
+                "tags": [
+                  "training",
+                  "inference",
+                  "optimization",
+                  "deployment"
+                ],
+                "difficulty": "advanced"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "kafka",
+        "name": "Kafka",
+        "icon": "",
+        "color": "#27ae60",
+        "description": "",
+        "subdomains": [
+          {
+            "id": "fundamental",
+            "name": "Fundamental",
+            "icon": "",
+            "color": "#27ae60",
+            "description": "",
+            "topics": [
+              {
+                "id": "kafkaroadmap",
+                "title": "Kafkaroadmap",
+                "file": "03-Kafka/01-Fundamental/KafkaRoadmap.md",
+                "tags": [
+                  "kafkaroadmap",
+                  "kafka",
+                  "fundamental"
+                ],
+                "difficulty": "beginner"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "automationtest",
+        "name": "Automationtest",
+        "icon": "",
+        "color": "#9b59b6",
+        "description": "",
+        "subdomains": [
+          {
+            "id": "katalon",
+            "name": "Katalon",
+            "icon": "",
+            "color": "#9b59b6",
+            "description": "",
+            "topics": [
+              {
+                "id": "katalonfundamentals",
+                "title": "Katalonfundamentals",
+                "file": "04-AutomationTest/01-Katalon/KatalonFundamentals.md",
+                "tags": [
+                  "katalonfundamentals",
+                  "automationtest",
+                  "katalon"
+                ],
+                "difficulty": "beginner"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "bytebytego",
+        "name": "Bytebytego",
+        "icon": "",
+        "color": "#f39c12",
+        "description": "",
+        "subdomains": [
+          {
+            "id": "general",
+            "name": "General",
+            "icon": "",
+            "color": "#f39c12",
+            "description": "",
+            "topics": [
+              {
+                "id": "short-long-polling-sse-websocket",
+                "title": "Short, Long Polling, SSE, Websocket",
+                "file": "05-ByteByteGo/Short, long polling, SSE, WebSocket.md",
+                "tags": [
+                  "short",
+                  "long",
+                  "polling",
+                  "sse",
+                  "websocket",
+                  "bytebytego"
+                ],
+                "difficulty": "intermediate"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
