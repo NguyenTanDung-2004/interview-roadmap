@@ -340,6 +340,17 @@
             "description": "",
             "topics": [
               {
+                "id": "grpc",
+                "title": "Grpc",
+                "file": "05-ByteByteGo/gRPC.md",
+                "tags": [
+                  "grpc",
+                  "bytebytego",
+                  "general"
+                ],
+                "difficulty": "intermediate"
+              },
+              {
                 "id": "short-long-polling-sse-websocket",
                 "title": "Short, Long Polling, SSE, Websocket",
                 "file": "05-ByteByteGo/Short, long polling, SSE, WebSocket.md",
@@ -350,6 +361,35 @@
                   "sse",
                   "websocket",
                   "bytebytego"
+                ],
+                "difficulty": "intermediate"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "aws",
+        "name": "AWS",
+        "icon": "",
+        "color": "#16a085",
+        "description": "",
+        "subdomains": [
+          {
+            "id": "general",
+            "name": "General",
+            "icon": "",
+            "color": "#16a085",
+            "description": "",
+            "topics": [
+              {
+                "id": "3necessarylevels",
+                "title": "Necessarylevels",
+                "file": "06-AWS/3NecessaryLevels.md",
+                "tags": [
+                  "necessarylevels",
+                  "aws",
+                  "general"
                 ],
                 "difficulty": "intermediate"
               }
