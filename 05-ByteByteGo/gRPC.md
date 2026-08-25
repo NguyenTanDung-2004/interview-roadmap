@@ -72,3 +72,6 @@
 * **Use REST:** For public APIs, third-party integrations, or standard Browser-to-Backend CRUD operations.
 * **Use WebSocket:** For real-time, bi-directional Browser-to-Backend features (Chat, Live Notifications).
 * **Use gRPC:** For high-performance backend microservice communication, heavy data streaming, or resource-constrained IoT/Mobile integrations.
+
+## 6. POC (branchName: poc/gRPC)
+
