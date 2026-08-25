@@ -34,5 +34,30 @@ class GrpcServerService extends SimpleGrpc.SimpleImplBase {
         }
         responseObserver.onCompleted();
     }
+
+    @Override
+    public StreamObserver<HelloRequest> chatHello(StreamObserver<HelloReply> responseObserver) {
+        return new StreamObserver<>() {
+            @Override
+            public void onNext(HelloRequest request) {
+                LOG.info("ChatHello for " + request.getName());
+                HelloReply reply = HelloReply.newBuilder()
+                        .setMessage("Hello(stream) ==> " + request.getName())
+                        .build();
+                responseObserver.onNext(reply);
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                LOG.warn("ChatHello stream closed with error", throwable);
+            }
+
+            @Override
+            public void onCompleted() {
+                LOG.info("ChatHello stream completed");
+                responseObserver.onCompleted();
+            }
+        };
+    }
 }
 
