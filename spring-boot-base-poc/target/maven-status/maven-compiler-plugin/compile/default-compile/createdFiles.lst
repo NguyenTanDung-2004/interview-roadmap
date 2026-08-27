@@ -1,0 +1,4 @@
+com\leon\spring_boot_base_poc\SpringBootBasePocApplication.class
+com\leon\spring_boot_base_poc\controller\SayHelloController.class
+com\leon\spring_boot_base_poc\ServletInitializer.class
+com\leon\spring_boot_base_poc\handler\StreamHandler.class
