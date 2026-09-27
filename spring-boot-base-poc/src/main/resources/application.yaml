@@ -1,3 +1,58 @@
 spring:
   application:
     name: spring-boot-base-poc
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: payment-email-service
+      # Wrapped in ErrorHandlingDeserializer so a malformed payload (poison
+      # pill at the deserialization level, e.g. invalid JSON) fails inside the
+      # deserializer instead of crashing the poll loop - the error is carried
+      # as a record header and handled by the same DefaultErrorHandler/DLT
+      # path as a business-logic exception thrown from the listener.
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      # Cap on records handed to the listener per poll(); keeps a single poll's
+      # processing time predictable so it doesn't blow past max-poll-interval-ms.
+      max-poll-records: 50
+      properties:
+        spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+        spring.json.trusted.packages: com.leon.spring_boot_base_poc.messaging.kafka.dto.event
+        # Max time between polls before the broker assumes this consumer is dead
+        # and force-rebalances its partitions away. Must comfortably exceed
+        # max-poll-records * worst-case per-record processing time.
+        max.poll.interval.ms: 300000
+        # How long the broker waits without a heartbeat before it evicts this
+        # consumer from the group and rebalances. Too low -> spurious rebalances
+        # under GC pauses/network blips. Too high -> slow failure detection.
+        session.timeout.ms: 45000
+        # How often the background heartbeat thread pings the broker; should be
+        # well under session.timeout.ms (rule of thumb: ~1/3).
+        heartbeat.interval.ms: 15000
+    listener:
+      # Disable auto-commit + MANUAL_IMMEDIATE: the offset is only committed when
+      # the listener explicitly calls ack.acknowledge(), and it commits that
+      # single offset synchronously right away instead of batching on the next
+      # poll. This is what gives crash-safety - if the process dies before
+      # acknowledge() runs, the message is redelivered on restart.
+      ack-mode: manual_immediate
+
+app:
+  kafka:
+    topics:
+      payment-created: payment-created
+      partitions: 6
+      replication-factor: 1
+    consumer-group: payment-email-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
