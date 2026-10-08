@@ -54,7 +54,9 @@ app:
   kafka:
     topics:
       payment-created: payment-created
-      partitions: 6
+      payment-refunded: payment-refunded
+      payment-created-partitions: 6
+      payment-refunded-partitions: 3
       replication-factor: 1
     consumer-group: payment-email-service
 
