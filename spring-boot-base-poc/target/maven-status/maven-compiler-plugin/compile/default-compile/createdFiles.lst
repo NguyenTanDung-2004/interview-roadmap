@@ -1,0 +1,8 @@
+com/leon/spring_boot_base_poc/messaging/kafka/KafkaVersionEnum.class
+com/leon/spring_boot_base_poc/messaging/kafka/EventTypeEnum.class
+com/leon/spring_boot_base_poc/messaging/kafka/dto/event/BaseEvent.class
+com/leon/spring_boot_base_poc/ServletInitializer.class
+com/leon/spring_boot_base_poc/messaging/kafka/producer/CreatePaymentProducer.class
+com/leon/spring_boot_base_poc/messaging/kafka/dto/event/CreatePaymentEvent.class
+com/leon/spring_boot_base_poc/messaging/kafka/producer/CustomKafkaProducer.class
+com/leon/spring_boot_base_poc/SpringBootBasePocApplication.class
