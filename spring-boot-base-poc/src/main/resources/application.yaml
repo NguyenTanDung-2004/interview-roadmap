@@ -6,6 +6,13 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      # Batching configuration
+      batch-size: 16384          # Batch size in bytes (16KB) - gom message đến 16KB thì gửi
+      linger-ms: 2000             # Wait up to 2 seconds for more messages to batch - dễ dàng observe batching
+      acks: all                  # Wait for all in-sync replicas to acknowledge
+      compression-type: snappy   # Compress batch messages
+      properties:
+        max.in.flight.requests.per.connection: 5  # Max messages waiting for ack
     consumer:
       group-id: payment-email-service
       # Wrapped in ErrorHandlingDeserializer so a malformed payload (poison

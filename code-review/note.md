@@ -1,6 +1,6 @@
 consumer-group: mỗi instance đóng vai là consumer cần cấu hình consumer group (groupId) để giải quyết một số bài toán như sau. (Ví dụ trong hệ thống có 3 instance đều lắng nghe 1 kafka topic.)
 - Nếu không có groupId, kafka sẽ xem 3 instance này là độc lập và 1 message trong topic này sẽ được xử lí tận 3 lần. (1 email notification sẽ được send 3 lần bởi 3 instance)
-- Kafka có các partition và quản lý thứ tự cũng như đánh dấu các message nào đã được xử lí thông qua offset. Nếu không có groupId, thì kafka sẽ không biết instance đó đến từ đó để đưa ra vị trí chính xác message nào tiếp theo cần được xử lí. 
+- Kafka có nhiều partition, mỗi parition chỉ được gắn cho một instance của một consumer-group tại một thời điểm. Kafka lưu trữ offset theo consumer-group để biết được với 1 consumer-group thì message nào đã được xử lí. Nếu chúng ta không sử dụng groupId thì Kafka sẽ không biết message nào đã được xử lí với consumer-group này tự động xử lí lại từ đầu.
 - 1 instance có thể xử lí nhiều partitions và các partition này sẽ bị giữ lại bởi chỉ riêng instance này. Nếu trong trường hợp instance này bị crash, việc sử dụng groupId giúp cho Kafka move toàn bộ partition đang bị chiếm giữ sang một instance cùng groupId khác để xử lí. tránh tình trạng các message bị hold lại.
 ...
 

@@ -23,11 +23,11 @@ public class PaymentDeadLetterListener {
         containerFactory = "dltKafkaListenerContainerFactory"
     )
     public void listen(ConsumerRecord<String, String> record) {
-        log.error(
-            "DLT: payment event needs investigation. topic={} partition={} offset={} key={} exceptionMessage={} value={}",
-            record.topic(), record.partition(), record.offset(), record.key(),
-            headerValue(record, KafkaHeaders.DLT_EXCEPTION_MESSAGE), record.value()
-        );
+        // log.error(
+        //     "DLT: payment event needs investigation. topic={} partition={} offset={} key={} exceptionMessage={} value={}",
+        //     record.topic(), record.partition(), record.offset(), record.key(),
+        //     headerValue(record, KafkaHeaders.DLT_EXCEPTION_MESSAGE), record.value()
+        // );
     }
 
     private String headerValue(ConsumerRecord<String, String> record, String headerName) {
